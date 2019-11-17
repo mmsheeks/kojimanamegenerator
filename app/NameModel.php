@@ -19,6 +19,7 @@ class NameModel {
         $this->isAllNames();
         $this->loadAllNames();
         $this->applyConditions();
+        $this->loadName();
         $this->loadCategoryDescriptionAndTitle();
     }
 
@@ -104,10 +105,10 @@ class NameModel {
 
     private function insertTheNameCondition( $name, $condition )
     {
-        $name = '';
+        $newName = '';
         if( $this->category == 'the' ) {
             $name = str_replace('the','',$name);
-            $name = 'The ' . $condition . $name;
+            $newName = 'The ' . $condition . $name;
         } else {
             $name = $condition . ' ' . $name;
         }
@@ -125,8 +126,6 @@ class NameModel {
             'violent' => $this->loadViolentName(),
             'subtext' => $this->loadSubtextFreeName()
         ];
-        $this->loadName();
-        unset( $this->names[ $this->category ] );
     }
 
     private function loadName()
@@ -134,7 +133,6 @@ class NameModel {
         switch( $this->inputs['5_1'] ) {
             case 1:
                 // normal name
-                $name = $this->loadNormalName();
                 $this->category = 'normal';
                 break;
             case 2:
@@ -143,7 +141,6 @@ class NameModel {
             case 5:
             case 6:
                 // occupational name
-                $name = $this->loadOccupationalName();
                 $this->category = 'occupational';
                 break;
             case 7:
@@ -151,14 +148,12 @@ class NameModel {
             case 9:
             case 10:
                 // horny name
-                $name = $this->loadHornyName();
                 $this->category = 'horny';
                 break;
             case 11:
             case 12:
             case 13:
                 // the name
-                $name = $this->loadTheName();
                 $this->category = 'the';
                 break;
             case 14:
@@ -166,21 +161,18 @@ class NameModel {
             case 16:
             case 17:
                 // cool name
-                $name = $this->loadCoolName();
                 $this->category = 'cool';
                 break;
             case 18:
             case 19:
                 // violent name
-                $name = $this->loadViolentName();
                 $this->category = 'violent';
                 break;
             case 20:
-                $name = $this->loadSubtextFreeName();
                 $this->category = 'subtext';
                 break;
         }
-        $this->name = $name;
+        $this->name = $this->names[ $this->category ];
     }
 
     private function loadNormalName()

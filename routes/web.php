@@ -21,3 +21,6 @@ Route::post('/form/stepfour', 'Controller@stepfour')->name('formStepFour');
 Route::post('/form/stepfive', 'Controller@stepfive')->name('formStepFive');
 
 Route::get('/name', 'Controller@name')->name('name');
+
+// testing routes
+Route::get('/testing/spoof', 'Controller@testinput');

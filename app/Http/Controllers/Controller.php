@@ -76,4 +76,40 @@ class Controller extends BaseController
         $name = new NameModel( $data );
         return view('name', ['model' => $name ] );
     }
+
+    public function testinput()
+    {
+        $data = [
+            'numberOfNames' => 1,
+            '2_1' => 'Martin Michael Sheeks',
+            '2_2' => 'Editor',
+            '2_3' => 'Domestic Short Hair',
+            '2_4' => 'Missed Entrance',
+            '2_5' => 'Rusty Spoon',
+            '2_6' => 'Helping',
+            '2_7' => '15',
+            '2_8' => 'abandonment',
+            '2_9' => 'cops',
+            '2_10' => 'movie',
+            '2_11' => 'tired',
+            '2_12' => 'liquid',
+            '2_13' => 'carton',
+            '2_14' => 'taurus',
+            '2_15' => 'kind',
+            '3_16' => 'col lee',
+            '3_17' => 'strangelove',
+            '3_18' => 'pleasures',
+            '3_19' => 'crispr',
+            '3_20' => 'railgun',
+            '3_21' => 'lullaby',
+            '4_1' => 1,
+            '4_2' => 7,
+            '4_3' => 1,
+            '4_4' => 50,
+            '5_1' => 10
+        ];
+
+        $name = new NameModel( $data );
+        dd( $name );
+    }
 }
